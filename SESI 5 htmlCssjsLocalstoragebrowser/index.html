@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #login-container {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            width: 300px;
+        }
+
+        #login-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        #login-container input,
+        #login-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+        }
+
+        #login-container button {
+            background-color: #e50914;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #login-container button:hover {
+            background-color: #f40612;
+        }
+
+        #logoutButton,
+        #admin,
+        #basic,
+        #moderator,
+        #helper {
+            display: none;
+        }
+
+        .dashboard {
+            display: none;
+        }
+
+        .dashboard.admin {
+            background-color: #1a1a1a;
+        }
+
+        .dashboard.moderator {
+            background-color: #2a2a2a;
+        }
+
+        .dashboard.helper {
+            background-color: #3a3a3a;
+        }
+
+        .dashboard.basic {
+            background-color: #4a4a4a;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="login-container">
+        <h1>Sign In</h1>
+        <input type="text" placeholder="Username" id="usernameInput" />
+        <input type="password" placeholder="Password" id="passwordInput" />
+        <button onclick="onLogin()" id="loginButton">Sign In</button>
+        <button onclick="onLogout()" id="logoutButton">Logout</button>
+        <h3 id="admin">Login Sebagai admin</h3>
+        <h3 id="basic">Login Sebagai user</h3>
+        <h3 id="moderator">Login Sebagai moderator</h3>
+        <h3 id="helper">Login Sebagai helper</h3>
+    </div>
+
+    <div id="adminDashboard" class="dashboard admin">
+        <h2>Admin Dashboard</h2>
+        <p>Selamat datang, Admin!</p>
+        <!-- Tambahkan elemen dashboard khusus admin di sini -->
+    </div>
+
+    <div id="moderatorDashboard" class="dashboard moderator">
+        <h2>Moderator Dashboard</h2>
+        <p>Selamat datang, Moderator!</p>
+        <!-- Tambahkan elemen dashboard khusus moderator di sini -->
+    </div>
+
+    <div id="helperDashboard" class="dashboard helper">
+        <h2>Helper Dashboard</h2>
+        <p>Selamat datang, Helper!</p>
+        <!-- Tambahkan elemen dashboard khusus helper di sini -->
+    </div>
+
+    <div id="basicDashboard" class="dashboard basic">
+        <h2>User Dashboard</h2>
+        <p>Selamat datang, User!</p>
+        <!-- Tambahkan elemen dashboard khusus user di sini -->
+    </div>
+
+    <script>
+        const usernameInput = document.getElementById("usernameInput");
+        const passwordInput = document.getElementById("passwordInput");
+        const loginButton = document.getElementById("loginButton");
+        const logoutButton = document.getElementById("logoutButton");
+        const admin = document.getElementById("admin");
+        const basic = document.getElementById("basic");
+        const moderator = document.getElementById("moderator");
+        const helper = document.getElementById("helper");
+
+        const adminDashboard = document.getElementById("adminDashboard");
+        const moderatorDashboard = document.getElementById("moderatorDashboard");
+        const helperDashboard = document.getElementById("helperDashboard");
+        const basicDashboard = document.getElementById("basicDashboard");
+
+        function onLogin() {
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+            localStorage.setItem("username", username);
+            logoutButton.style.display = "block";
+
+            if (username === "admin" && password === "admin123") {
+                setRole("admin");
+            } else if (username === "moderator" && password === "mod123") {
+                setRole("moderator");
+            } else if (username === "helper" && password === "help123") {
+                setRole("helper");
+            } else {
+                setRole("basic");
+            }
+        }
+
+        function setRole(role) {
+            localStorage.setItem("role", role);
+            usernameInput.style.display = "none";
+            passwordInput.style.display = "none";
+            loginButton.style.display = "none";
+            if (role === "admin") {
+                admin.style.display = "block";
+                basic.style.display = "none";
+                moderator.style.display = "none";
+                helper.style.display = "none";
+                adminDashboard.style.display = "block";
+                moderatorDashboard.style.display = "none";
+                helperDashboard.style.display = "none";
+                basicDashboard.style.display = "none";
+            } else if (role === "moderator") {
+                admin.style.display = "none";
+                basic.style.display = "none";
+                moderator.style.display = "block";
+                helper.style.display = "none";
+                adminDashboard.style.display = "none";
+                moderatorDashboard.style.display = "block";
+                helperDashboard.style.display = "none";
+                basicDashboard.style.display = "none";
+            } else if (role === "helper") {
+                admin.style.display = "none";
+                basic.style.display = "none";
+                moderator.style.display = "none";
+                helper.style.display = "block";
+                adminDashboard.style.display = "none";
+                moderatorDashboard.style.display = "none";
+                helperDashboard.style.display = "block";
+                basicDashboard.style.display = "none";
+            } else {
+                admin.style.display = "none";
+                basic.style.display = "block";
+                moderator.style.display = "none";
+                helper.style.display = "none";
+                adminDashboard.style.display = "none";
+                moderatorDashboard.style.display = "none";
+                helperDashboard.style.display = "none";
+                basicDashboard.style.display = "block";
+            }
+        }
+
+        function checkLoginStatus() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                usernameInput.style.display = "none";
+                passwordInput.style.display = "none";
+                loginButton.style.display = "none";
+                logoutButton.style.display = "block";
+                const role = localStorage.getItem('role');
+                setRole(role);
+            }
+        }
+
+        function onLogout() {
+            localStorage.clear();
+            location.reload();
+        }
+
+        checkLoginStatus();
+    </script>
+</body>
+</body>

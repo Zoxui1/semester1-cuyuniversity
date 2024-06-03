@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>CETRAK CETREK LAMPU SESI 4</title>
+  </head>
+  <body>
+    <!-- Navbar using Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-gray-800 text-white">
+      <a class="navbar-brand text-white" href="#">Nabil Cuy!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://www.youtube.com/@Miawaug">My Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://www.youtube.com/@deaafrizal">Ini Dia! 😀</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="flex flex-col justify-center items-center min-h-screen w-full bg-gray-800 gap-4">
+      <!-- Ruangan Keluarga (3 Lampu) -->
+      <div class="flex flex-col items-center gap-4">
+        <h2 class="text-white">Ruangan Keluarga</h2>
+        <div class="flex justify-center gap-4">
+          <!-- lampu 1 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu1" />
+            <label for="default-toggle1" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle1" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          <!-- lampu 2 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu2" />
+            <label for="default-toggle2" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle2" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          <!-- lampu 3 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu3" />
+            <label for="default-toggle3" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle3" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ruangan Makan (1 Lampu) -->
+      <div class="flex flex-col items-center gap-4">
+        <h2 class="text-white">Ruangan Makan</h2>
+        <div class="flex justify-center gap-4">
+          <!-- lampu 4 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu4" />
+            <label for="default-toggle4" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle4" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ruangan Tidur (2 Lampu) -->
+      <div class="flex flex-col items-center gap-4">
+        <h2 class="text-white">Ruangan Tidur</h2>
+        <div class="flex justify-center gap-4">
+          <!-- lampu 5 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu5" />
+            <label for="default-toggle5" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle5" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          <!-- lampu 6 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu6" />
+            <label for="default-toggle6" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle6" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ruangan Tamu (4 Lampu) -->
+      <div class="flex flex-col items-center gap-4">
+        <h2 class="text-white">Ruangan Tamu</h2>
+        <div class="flex justify-center gap-4">
+          <!-- lampu 7 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu7" />
+            <label for="default-toggle7" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle7" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          <!-- lampu 8 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu8" />
+            <label for="default-toggle8" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle8" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          <!-- lampu 9 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu9" />
+            <label for="default-toggle9" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle9" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          <!-- lampu 10 -->
+          <div class="flex flex-col gap-2 items-center">
+            <img src="assests/images/off.gif" alt="" id="lampu10" />
+            <label for="default-toggle10" class="inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" id="default-toggle10" class="sr-only peer" onchange="saklar()">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ini adalah script js kita -->
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./src/js/index.js" type="application/javascript"></script>
+  </body>
+</html>
+      </div>
+    </div>

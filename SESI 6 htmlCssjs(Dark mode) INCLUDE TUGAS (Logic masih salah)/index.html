@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark mode sesi 6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="#" onclick="reRender()" id="home">Reload</a>
+            <a href="#" onclick="toggleDarkMode()" id="mode">Mode Dark</a>
+            <a href="#" onclick="toggleHalalMode()" id="halal">Mode Halal</a>
+            <a href="#" onclick="toggleSigmaMode()" id="sigma">Mode Sigma</a>
+        </nav>
+        <h1>Hello World</h1>
+        <p id="info"></p>
+    </div>
+
+    <script>
+        const body = document.body;
+        const info = document.getElementById('info');
+        const mode = document.getElementById('mode');
+        const home = document.getElementById('home');
+        const halal = document.getElementById('halal');
+        const sigma = document.getElementById('sigma');
+
+        const darkLimit = 5;
+        let darkCounter = 0;
+        let isHalalModeActive = false;
+
+        function updateInfo() {
+            const darkRemainingLeft = darkLimit - darkCounter;
+            if (darkRemainingLeft > 0) {
+                info.textContent = `dark mode terpakai: ${darkCounter}x, tersisa ${darkRemainingLeft}x`;
+            } else {
+                info.textContent = '🌟 dark mode sudah terpakai, silahkan reset terlebih dahulu 🌟';
+                mode.style.display = 'none';
+                home.textContent = 'Reset';
+            }
+        }
+
+        function toggleDarkMode() {
+            if (!isHalalModeActive && darkCounter < darkLimit) {
+                darkCounter++;
+                body.classList.toggle('dark');
+                mode.textContent = body.classList.contains('dark') ? 'Mode Light' : 'Mode Dark';
+                updateInfo();
+            }
+        }
+
+        function toggleHalalMode() {
+            body.classList.toggle('halal');
+            isHalalModeActive = body.classList.contains('halal');
+            halal.textContent = isHalalModeActive ? 'Back' : 'Mode Halal';
+            mode.style.display = isHalalModeActive ? 'none' : 'inline';
+            sigma.style.display = isHalalModeActive ? 'none' : 'inline';
+            if (isHalalModeActive) {
+                info.textContent = '';
+            } else {
+                updateInfo();
+            }
+        }
+
+        function toggleSigmaMode() {
+            if (!isHalalModeActive) {
+                body.classList.toggle('sigma');
+                sigma.textContent = body.classList.contains('sigma') ? 'Back' : 'Mode Sigma';
+                if (body.classList.contains('sigma')) {
+                    mode.style.display = 'none';
+                    halal.style.display = 'none';
+                    info.textContent = ''; // Hilangkan info text content ketika mode sigma diaktifkan
+                } else {
+                    mode.style.display = 'inline';
+                    halal.style.display = 'inline';
+                    updateInfo(); // Tampilkan kembali info text content ketika mode sigma dinonaktifkan
+                }
+            }
+        }
+
+        function reRender() {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
